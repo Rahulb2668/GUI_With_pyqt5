@@ -1,0 +1,53 @@
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+import sys
+
+class display(QWidget):
+
+    ]
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Display')
+        self.gif = QMovie("Webp.net-gifmaker.gif")
+        self.gif.setScaledSize(QSize().scaled(300, 300, Qt.KeepAspectRatio))
+
+        self.UI()
+        self.show()
+
+    def UI(self):
+        self.widgets()
+        self.layouts()
+
+    def layouts(self):
+        self.mainLayout = QVBoxLayout()
+        self.bottomLayout = QHBoxLayout()
+        self.leftLayout = QVBoxLayout()
+        self.rightLayout = QVBoxLayout()
+
+        self.bottomLayout.addWidget(QLabel('Hi bro Whats up'))
+        self.bottomLayout.addWidget(QLabel('Hi bro Whats up'))
+        self.bottomLayout.addWidget(QLabel('Hi bro Whats up'))
+        self.bottomLayout.addWidget(QLabel('Hi bro Whats up'))
+        self.bottomLayout.addWidget(self.label)
+
+        self.mainLayout.addWidget(self.windowlabel)
+        self.mainLayout.addLayout(self.bottomLayout)
+        self.setLayout(self.mainLayout)
+
+    def widgets(self):
+        self.windowlabel = QLabel('This is trial')
+        self.label = QLabel()
+        self.label.move(90,90)
+        self.label.setMovie(self.gif)
+        self.gif.start()
+
+
+def main():
+    app = QApplication([])
+    window = display()
+    sys.exit(app.exec())
+
+
+if __name__ == '__main__':
+    main()
